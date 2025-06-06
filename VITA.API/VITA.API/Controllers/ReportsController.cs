@@ -11,13 +11,15 @@ namespace VITA.API.Controllers;
 
 [ApiController]
 [Route("api/[controller]")]
-[Authorize]
+[Authorize] // 👈 Aplique segurança padrão no controller
 public class ReportsController : ControllerBase
 {
     private readonly VitaContext _ctx;
     public ReportsController(VitaContext ctx) => _ctx = ctx;
 
+    // ✅ ESTE ENDPOINT AGORA ESTÁ LIBERADO SEM AUTENTICAÇÃO
     [HttpGet]
+    [AllowAnonymous] // 👈 Isso permite acesso sem token JWT
     public async Task<IEnumerable<Report>> GetAll() => await _ctx.Reports.ToListAsync();
 
     [HttpGet("me")]
@@ -46,8 +48,11 @@ public class ReportsController : ControllerBase
         var r = await _ctx.Reports.FirstOrDefaultAsync(x => x.Id == id && x.UserId == uid);
         if (r == null) return NotFound();
 
-        r.Type = upd.Type; r.Description = upd.Description;
-        r.Latitude = upd.Latitude; r.Longitude = upd.Longitude; r.Date = upd.Date;
+        r.Type = upd.Type;
+        r.Description = upd.Description;
+        r.Latitude = upd.Latitude;
+        r.Longitude = upd.Longitude;
+        r.Date = upd.Date;
 
         if (string.IsNullOrWhiteSpace(upd.Address) ||
             r.Latitude != upd.Latitude || r.Longitude != upd.Longitude)
