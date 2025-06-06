@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("VITA.API")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Release")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+9b8d5fd5d390a1a0ccc0bb1e9f7ff75a7cdbb53c")]
 [assembly: System.Reflection.AssemblyProductAttribute("VITA.API")]
 [assembly: System.Reflection.AssemblyTitleAttribute("VITA.API")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
